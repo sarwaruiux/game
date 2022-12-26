@@ -48,28 +48,4 @@
       if (e.keyCode === 37) input.left = false;
       if (e.keyCode === 38) input.up = false;
       if (e.keyCode === 39) input.right = false;
-      if (e.keyCode === 40) input.down = false;
-    });
-
-    // update function
-    function update() {
-      // update the player's position based on user input
-      if (input.left) {
-        x -= speed;
-      }
-      if (input.right) {
-        x += speed;
-      }
-      if (input.up) {
-        y -= speed;
-      }
-      if (input.down) {
-        y += speed;
-      }
-
-      // generate a new obstacle at random intervals
-      if (Math.random() < 0.01) {
-        let obstacle = {
-          x: canvas.width,
-          y: Math.random() * canvas.height,
-          width:
+      if (e.keyCode === 40
