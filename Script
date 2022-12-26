@@ -1,0 +1,25 @@
+body {
+  background-color: black; /* set the background color to black */
+}
+
+canvas {
+  border: 1px solid white; /* add a white border to the canvas */
+}
+
+/* style for the player (space ship) */
+.player {
+  background-color: blue; /* set the background color to blue */
+  border-radius: 25px; /* add rounded corners */
+}
+
+/* style for the obstacles (aliens) */
+.obstacle {
+  background-color: green; /* set the background color to green */
+  border-radius: 25px; /* add rounded corners */
+}
+
+/* style for the enemy spacecraft */
+.enemy {
+  background-color: red; /* set the background color to red */
+  border-radius: 25px; /* add rounded corners */
+}
