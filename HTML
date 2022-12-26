@@ -22,12 +22,6 @@
       background-color: green; /* set the background color to green */
       border-radius: 25px; /* add rounded corners */
     }
-
-    /* style for the enemy spacecraft */
-    .enemy {
-      background-color: red; /* set the background color to red */
-      border-radius: 25px; /* add rounded corners */
-    }
   </style>
 </head>
 <body>
@@ -41,8 +35,6 @@
     let speed = 5; // speed of the player
     let score = 0; // score of the player
     let obstacles = []; // array to store obstacles
-    let enemies = []; // array to store enemies
-    let powerUps = []; // array to store active power-ups
     let input = { left: false, right: false, up: false, down: false }; // object to store input state
 
     // event listeners to handle input
@@ -54,3 +46,30 @@
     });
     window.addEventListener("keyup", function(e) {
       if (e.keyCode === 37) input.left = false;
+      if (e.keyCode === 38) input.up = false;
+      if (e.keyCode === 39) input.right = false;
+      if (e.keyCode === 40) input.down = false;
+    });
+
+    // update function
+    function update() {
+      // update the player's position based on user input
+      if (input.left) {
+        x -= speed;
+      }
+      if (input.right) {
+        x += speed;
+      }
+      if (input.up) {
+        y -= speed;
+      }
+      if (input.down) {
+        y += speed;
+      }
+
+      // generate a new obstacle at random intervals
+      if (Math.random() < 0.01) {
+        let obstacle = {
+          x: canvas.width,
+          y: Math.random() * canvas.height,
+          width:
