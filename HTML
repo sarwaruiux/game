@@ -3,68 +3,54 @@
 <head>
   <title>Space Ship Game</title>
   <style>
-    /body {
-  background-color: black; /* set the background color to black */
-}
+    body {
+      background-color: black; /* set the background color to black */
+    }
 
-canvas {
-  border: 1px solid white; /* add a white border to the canvas */
-}
+    canvas {
+      border: 1px solid white; /* add a white border to the canvas */
+    }
 
-/* style for the player (space ship) */
-.player {
-  background-color: blue; /* set the background color to blue */
-  border-radius: 25px; /* add rounded corners */
-}
+    /* style for the player (space ship) */
+    .player {
+      background-color: blue; /* set the background color to blue */
+      border-radius: 25px; /* add rounded corners */
+    }
 
-/* style for the obstacles (aliens) */
-.obstacle {
-  background-color: green; /* set the background color to green */
-  border-radius: 25px; /* add rounded corners */
-}
+    /* style for the obstacles (aliens) */
+    .obstacle {
+      background-color: green; /* set the background color to green */
+      border-radius: 25px; /* add rounded corners */
+    }
 
-/* style for the enemy spacecraft */
-.enemy {
-  background-color: red; /* set the background color to red */
-  border-radius: 25px; /* add rounded corners */
-}
-/
+    /* style for the enemy spacecraft */
+    .enemy {
+      background-color: red; /* set the background color to red */
+      border-radius: 25px; /* add rounded corners */
+    }
   </style>
 </head>
 <body>
   <canvas id="gameCanvas" width="800" height="600"></canvas>
   <script>
-    // let canvas = document.getElementById("gameCanvas");
-let ctx = canvas.getContext("2d");
+    // define global variables
+    let canvas = document.getElementById("gameCanvas");
+    let ctx = canvas.getContext("2d");
+    let x = 50; // starting x position of the player
+    let y = 50; // starting y position of the player
+    let speed = 5; // speed of the player
+    let score = 0; // score of the player
+    let obstacles = []; // array to store obstacles
+    let enemies = []; // array to store enemies
+    let powerUps = []; // array to store active power-ups
+    let input = { left: false, right: false, up: false, down: false }; // object to store input state
 
-let x = 50; // starting x position of the player
-let y = 50; // starting y position of the player
-let speed = 5; // speed of the player
-
-function update() {
-  // update the player's position based on user input
-  if (input.left) {
-    x -= speed;
-  }
-  if (input.right) {
-    x += speed;
-  }
-  if (input.up) {
-    y -= speed;
-  }
-  if (input.down) {
-    y += speed;
-  }
-
-  // clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  // draw the player
-  ctx.fillRect(x, y, 50, 50);
-}
-
-setInterval(update, 1000 / 60); // run the update function 60 times per second
-
-  </script>
-</body>
-</html>
+    // event listeners to handle input
+    window.addEventListener("keydown", function(e) {
+      if (e.keyCode === 37) input.left = true;
+      if (e.keyCode === 38) input.up = true;
+      if (e.keyCode === 39) input.right = true;
+      if (e.keyCode === 40) input.down = true;
+    });
+    window.addEventListener("keyup", function(e) {
+      if (e.keyCode === 37) input.left = false;
