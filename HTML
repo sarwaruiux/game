@@ -2,20 +2,44 @@
 <html>
 <head>
   <title>Space Ship Game</title>
+  <style>
+    /body {
+  background-color: black; /* set the background color to black */
+}
+
+canvas {
+  border: 1px solid white; /* add a white border to the canvas */
+}
+
+/* style for the player (space ship) */
+.player {
+  background-color: blue; /* set the background color to blue */
+  border-radius: 25px; /* add rounded corners */
+}
+
+/* style for the obstacles (aliens) */
+.obstacle {
+  background-color: green; /* set the background color to green */
+  border-radius: 25px; /* add rounded corners */
+}
+
+/* style for the enemy spacecraft */
+.enemy {
+  background-color: red; /* set the background color to red */
+  border-radius: 25px; /* add rounded corners */
+}
+/
+  </style>
 </head>
 <body>
   <canvas id="gameCanvas" width="800" height="600"></canvas>
-</body>
-</html>
-script
-let canvas = document.getElementById("gameCanvas");
+  <script>
+    // let canvas = document.getElementById("gameCanvas");
 let ctx = canvas.getContext("2d");
 
 let x = 50; // starting x position of the player
 let y = 50; // starting y position of the player
 let speed = 5; // speed of the player
-
-let obstacles = []; // array to store obstacles
 
 function update() {
   // update the player's position based on user input
@@ -37,33 +61,10 @@ function update() {
 
   // draw the player
   ctx.fillRect(x, y, 50, 50);
-
-  // draw the obstacles
-  for (let i = 0; i < obstacles.length; i++) {
-    ctx.fillRect(obstacles[i].x, obstacles[i].y, 50, 50);
-  }
-
-  // update the position of the obstacles
-  for (let i = 0; i < obstacles.length; i++) {
-    obstacles[i].y += 5; // move the obstacle down the screen
-  }
-
-  // check for collision with obstacles
-  for (let i = 0; i < obstacles.length; i++) {
-    if (x < obstacles[i].x + 50 &&
-        x + 50 > obstacles[i].x &&
-        y < obstacles[i].y + 50 &&
-        y + 50 > obstacles[i].y) {
-      // player has collided with an obstacle, end the game
-      alert("Game over!");
-      return;
-    }
-  }
 }
 
 setInterval(update, 1000 / 60); // run the update function 60 times per second
 
-// add an obstacle every second
-setInterval(function() {
-  let x = Math.floor(Math.random() * (canvas.width - 50)); // random x position
- 
+  </script>
+</body>
+</html>
